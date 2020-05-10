@@ -5,7 +5,7 @@
  */
 
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   stringText: '',
 };
 
-function NewStringForm() {
+function NewStringForm(props) {
   const [formData, setFormData] = useState(INITIAL_STATE);
 
   const handleChange = evt => {
@@ -26,6 +26,7 @@ function NewStringForm() {
 
   const handleSubmit = evt => {
     evt.preventDefault();
+    props.addString(formData.stringText);
   };
 
   return (
@@ -43,6 +44,8 @@ function NewStringForm() {
   );
 }
 
-NewStringForm.propTypes = {};
+NewStringForm.propTypes = {
+  addString: PropTypes.func,
+};
 
 export default NewStringForm;
