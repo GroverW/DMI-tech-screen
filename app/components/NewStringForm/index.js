@@ -6,9 +6,11 @@
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
+import InputRow from './InputRow';
+import TextInput from './TextInput';
+import Button from './Button';
 import messages from './messages';
 
 const INITIAL_STATE = {
@@ -31,20 +33,24 @@ function NewStringForm(props) {
 
   return (
     <form>
-      <input
-        type="text"
-        name="stringText"
-        value={formData.stringText}
-        onChange={handleChange}
-      />
-      <button type="submit" onClick={handleSubmit}>
-        <FormattedMessage {...messages.addButton} />
-      </button>
+      <InputRow>
+        <TextInput
+          type="text"
+          name="stringText"
+          theme={props.theme}
+          value={formData.stringText}
+          onChange={handleChange}
+        />
+        <Button theme={props.theme} type="submit" onClick={handleSubmit}>
+          <FormattedMessage {...messages.addButton} />
+        </Button>
+      </InputRow>
     </form>
   );
 }
 
 NewStringForm.propTypes = {
+  theme: PropTypes.object,
   addString: PropTypes.func,
 };
 
