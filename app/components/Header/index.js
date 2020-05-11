@@ -12,7 +12,7 @@ import { createSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-import { makeSelectSetTheme } from '../../containers/SetThemeProvider/selectors';
+import { makeGetTheme } from '../../containers/SetThemeProvider/selectors';
 import Nav from '../Nav';
 import HomeLink from '../HomeLink';
 import HeaderLink from '../HeaderLink';
@@ -42,7 +42,7 @@ Header.propTypes = {
 };
 
 const mapStateToProps = createSelector(
-  makeSelectSetTheme(),
+  makeGetTheme(),
   theme => ({
     theme: theme.colors,
   }),

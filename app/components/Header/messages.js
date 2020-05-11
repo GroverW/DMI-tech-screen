@@ -11,7 +11,7 @@ export const scope = 'app.components.NavBar';
 export default defineMessages({
   home: {
     id: `${scope}.home`,
-    defaultMessage: 'String Central Inc.',
+    defaultMessage: 'String Central',
   },
   viewAll: {
     id: `${scope}.viewAll`,
