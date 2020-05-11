@@ -8,9 +8,12 @@ const light = {
   name: 'light',
   colors: {
     font: 'black',
-    background: '#FAFAFA',
-    primary: 'blue',
-    border: '#5294FF',
+    background: '#fafafa',
+    backgroundSubtle: '#ececec',
+    primary: '#5294ff',
+    primaryHover: '#3f7fe8',
+    primaryFocus: '#2c68c9',
+    border: '#5294ff',
     body: 'white',
   },
 };
@@ -19,10 +22,13 @@ const dark = {
   name: 'dark',
   colors: {
     font: 'white',
-    background: '#2D2D2D',
-    primary: 'white',
+    background: '#2d2d2d',
+    backgroundSubtle: '#3d3d3d',
+    primary: 'gold',
+    primaryHover: 'gold',
+    primaryFocus: 'gold',
     border: 'gold',
-    body: '#2D2D2D',
+    body: '#2d2d2d',
   },
 };
 
