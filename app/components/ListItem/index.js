@@ -1,17 +1,17 @@
 /**
- *
  * ListItem
- *
  */
 
-import React from 'react';
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
-function ListItem() {
-  return <div />;
-}
-
-ListItem.propTypes = {};
+const ListItem = styled.div`
+  padding: 20px 15px;
+  margin: 15px auto;
+  width: 600px;
+  border-left: 3px solid ${props => props.theme.border};
+  text-align: left;
+  background-color: ${props => props.theme.backgroundSubtle};
+  border-radius: 0 5px 5px 0;
+`;
 
 export default ListItem;
