@@ -7,16 +7,16 @@ import { themes } from './themes';
  * Direct selector to the setTheme state domain
  */
 
-const selectTheme = state => state.theme || initialState;
+const getTheme = state => state.theme || initialState;
 
 /**
  * Select the ui theme
  */
 
-const makeSelectSetTheme = () =>
+const makeGetTheme = () =>
   createSelector(
-    selectTheme,
+    getTheme,
     themeState => themes[themeState.theme],
   );
 
-export { selectTheme, makeSelectSetTheme };
+export { getTheme, makeGetTheme };
