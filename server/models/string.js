@@ -1,7 +1,9 @@
 const { RESULTS_PER_PAGE } = require('../config');
 
-let db = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
-db = new Array(115).fill(0).map((v, i) => i + 1);
+const db = new Array(115).fill(0).map((v, i) => ({
+  id: i + 1,
+  text: `This is string ${i + 1}`,
+}));
 
 /** Related functions for strings. */
 
@@ -21,9 +23,11 @@ class String {
   }
 
   static create(data) {
-    db.unshift(data);
+    const newString = { id: db.length, text: data };
 
-    return data;
+    db.unshift(newString);
+
+    return newString;
   }
 }
 
