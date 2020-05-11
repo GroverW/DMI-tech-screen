@@ -15,10 +15,10 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import HomePage from 'containers/HomePage/Loadable';
-import AddNewString from 'containers/AddNewString';
-import AllStrings from 'containers/AllStrings';
+import AddNewString from 'containers/Strings/AddNewString';
+import AllStrings from 'containers/Strings/AllStrings';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import { makeSelectSetTheme } from '../SetThemeProvider/selectors';
+import { makeGetTheme } from '../SetThemeProvider/selectors';
 import Header from '../../components/Header';
 
 import GlobalStyle from '../../global-styles';
@@ -45,7 +45,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = createSelector(
-  makeSelectSetTheme(),
+  makeGetTheme(),
   theme => ({
     theme: theme.colors,
   }),
