@@ -7,14 +7,17 @@ import styled from 'styled-components';
 const Button = styled.button`
   color: white;
   padding: 5px 10px;
-  background-color: white;
+  background-color: ${props => props.theme.primary};
+  border-radius: 5px;
 
   &:hover {
-    color: rgb(0, 0, 0);
+    cursor: pointer;
+    background-color: ${props => props.theme.primaryHover};
   }
-  &.active {
-    text-decoration: underline;
+  &:focus {
+    background-color: ${props => props.theme.primaryFocus};
+    outline: none;
   }
 `;
 
-export default Button.button;
+export default Button;
