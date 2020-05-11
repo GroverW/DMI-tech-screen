@@ -12,7 +12,7 @@ import { createSelector } from 'reselect';
 
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
-import { makeSelectSetTheme } from '../../containers/SetThemeProvider/selectors';
+import { makeGetTheme } from '../../containers/SetThemeProvider/selectors';
 import { themes } from '../../containers/SetThemeProvider/themes';
 import { setTheme } from '../../containers/SetThemeProvider/actions';
 import Toggle from './Toggle';
@@ -41,7 +41,7 @@ ThemeToggle.propTypes = {
 };
 
 const mapStateToProps = createSelector(
-  makeSelectSetTheme(),
+  makeGetTheme(),
   theme => ({
     theme,
   }),
