@@ -4,16 +4,18 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 
 const String = require('../models/string');
-const { getPageStart } = require('../utils/helpers');
 
 /** GET / => [string, ...] */
 
 router.get('/', async (req, res, next) => {
   try {
-    const { page } = req.query;
-    const start = getPageStart(page);
+    const { start } = req.query;
 
-    const strings = String.findAll(start);
+    if (!start || !Number.isInteger(+start)) {
+      return res.status(400).json({ error: 'you messed up' });
+    }
+
+    const strings = String.findAll(+start);
 
     return res.json({ strings });
   } catch (err) {
@@ -25,11 +27,13 @@ router.get('/', async (req, res, next) => {
 
 router.post('/new', async (req, res, next) => {
   try {
-    const { data } = req.body;
+    // const { data } = req.body;
 
-    const string = data && String.create(data);
+    return res.status(400).json({ error: 'sorry that did not work.' });
 
-    return res.status(201).json({ string });
+    // const string = data && String.create(data);
+
+    // return res.status(201).json({ string });
   } catch (err) {
     return next(err);
   }
