@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddNewString /> Should render and match the snapshot 1`] = `
+<div>
+  <h2>
+    <span>
+      Add a New String
+    </span>
+  </h2>
+  <div
+    class="ContentContainer-sc-18efx5u-0 lpiSfa"
+  >
+    <span>
+      Fill out the input below and click "Add String" to create a brand new String!
+    </span>
+    <form
+      class="Form__Toggle-sc-3k7ol5-0 hetqVK"
+    >
+      <div
+        class="InputRow-sc-18vvyvg-0 fQSdff"
+      >
+        <input
+          class="TextInput-f28vzp-0 aRolk"
+          name="stringText"
+          required=""
+          type="text"
+          value=""
+        />
+        <button
+          class="Button-sc-1j8lw2q-0 iaLkYH"
+          type="submit"
+        >
+          <span>
+            Add String
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+`;
