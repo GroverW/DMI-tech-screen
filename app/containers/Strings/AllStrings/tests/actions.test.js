@@ -22,7 +22,7 @@ describe('AllStrings actions', () => {
       expect(loadStringsError()).toEqual(expected);
     });
   });
-  describe('Load Strings Action', () => {
+  describe('Load Strings Error Action', () => {
     it('has a type of LOAD_STRINGS_ERROR', () => {
       const expected = {
         type: LOAD_STRINGS_ERROR,
