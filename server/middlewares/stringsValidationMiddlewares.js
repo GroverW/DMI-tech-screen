@@ -1,5 +1,10 @@
 const { body, query, validationResult } = require('express-validator');
 
+/**
+ * get query param 'start' should:
+ * - exist
+ * - be an Integer >= 0
+ */
 const getStringsValidationRules = () => [
   query('start')
     .exists()
@@ -8,6 +13,11 @@ const getStringsValidationRules = () => [
     .withMessage('Start must be a positive integer or 0.'),
 ];
 
+/**
+ * post data should:
+ * - exist
+ * - be of length >= 1 and <= 300
+ */
 const postStringValidationRules = () => [
   body('data')
     .exists()
@@ -18,6 +28,11 @@ const postStringValidationRules = () => [
     .escape(),
 ];
 
+/**
+ * validate
+ * gathers validation errors and maps them
+ * to array
+ */
 const validate = (req, res, next) => {
   const errors = validationResult(req);
 
@@ -25,7 +40,7 @@ const validate = (req, res, next) => {
 
   const errorList = [];
 
-  errors.array().forEach(error => errorList.push({ [error.param]: error.msg }));
+  errors.array().forEach(error => errorList.push(error.msg));
 
   return next({
     status: 400,
