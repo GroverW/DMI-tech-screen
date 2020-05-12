@@ -6,12 +6,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
 // import { FormattedMessage } from 'react-intl';
-// import messages from './messages';
 import { makeGetTheme } from '../../containers/Themes/selectors';
 import { themes } from '../../containers/Themes';
 import { setTheme } from '../../containers/Themes/actions';
