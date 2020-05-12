@@ -45,11 +45,7 @@ export function AddNewString(props) {
       </h2>
       <ContentContainer>
         <FormattedMessage {...messages.body} />
-        <NewStringForm
-          theme={props.theme.colors}
-          loaded={props.loaded}
-          addString={props.addString}
-        />
+        <NewStringForm theme={props.theme.colors} addString={props.addString} />
 
         {props.errors &&
           props.errors.map(error => (
