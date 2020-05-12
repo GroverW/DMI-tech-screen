@@ -16,6 +16,10 @@ export default defineMessages({
   body: {
     id: `${scope}.body`,
     defaultMessage:
-      'Enter text into the input below and click submit to create a brand new String!',
+      'Fill out the input below and click "Add String" to create a brand new String!',
+  },
+  success: {
+    id: `${scope}.success`,
+    defaultMessage: 'Successfully added String!',
   },
 });
