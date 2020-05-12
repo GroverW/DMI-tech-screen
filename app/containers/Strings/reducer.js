@@ -11,12 +11,14 @@ import {
   LOAD_STRINGS,
   LOAD_STRINGS_SUCCESS,
   LOAD_STRINGS_ERROR,
+  RESET_STATUSES,
 } from './constants';
 
 export const initialState = {
   list: [],
   loading: false,
-  error: '',
+  loaded: false,
+  error: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -25,29 +27,40 @@ const stringsReducer = (state = initialState, action) =>
     switch (action.type) {
       case ADD_STRING:
         draft.loading = true;
-        draft.error = '';
+        draft.loaded = false;
+        draft.error = false;
         break;
       case ADD_STRING_SUCCESS:
         draft.loading = false;
-        draft.error = '';
-        draft.list.unshift(action.data);
+        draft.loaded = true;
+        draft.error = false;
+        if (draft.list.length) draft.list.unshift(action.data);
         break;
       case ADD_STRING_ERROR:
         draft.loading = false;
+        draft.loaded = false;
         draft.error = action.error;
         break;
       case LOAD_STRINGS:
         draft.loading = true;
-        draft.error = '';
+        draft.loaded = false;
+        draft.error = false;
         break;
       case LOAD_STRINGS_SUCCESS:
         draft.loading = false;
-        draft.error = '';
+        if (!action.data.length) draft.loaded = true;
+        draft.error = false;
         draft.list.push(...action.data);
         break;
       case LOAD_STRINGS_ERROR:
         draft.loading = false;
+        draft.loaded = false;
         draft.error = action.error;
+        break;
+      case RESET_STATUSES:
+        draft.loading = initialState.loading;
+        draft.loaded = initialState.loaded;
+        draft.error = initialState.error;
         break;
     }
   });

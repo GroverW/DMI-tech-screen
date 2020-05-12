@@ -11,3 +11,5 @@ export const ADD_STRING_ERROR = 'app/AddNewString/ADD_STRING_ERROR';
 export const LOAD_STRINGS = 'app/AllStrings/LOAD_STRINGS';
 export const LOAD_STRINGS_SUCCESS = 'app/AllStrings/LOAD_STRINGS_SUCCESS';
 export const LOAD_STRINGS_ERROR = 'app/AllStrings/LOAD_STRINGS_ERROR';
+
+export const RESET_STATUSES = 'app/Strings/RESET_STATUSES';
