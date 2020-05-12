@@ -8,13 +8,12 @@ import styled from 'styled-components';
 
 const types = {
   error: '#f24e4e',
-  success: '',
-  warning: '',
+  success: '#2ab060',
 };
 
 const Alert = styled.span`
   display: block;
-  padding: 5px 10px;
+  padding: 10px;
   margin-top: 10px;
   color: white;
   background-color: ${props => types[props.type]};
