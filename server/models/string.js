@@ -1,9 +1,4 @@
-const { RESULTS_PER_PAGE } = require('../config');
-
-const db = new Array(115).fill(0).map((v, i) => ({
-  id: i + 1,
-  text: `This is string ${i + 1}`,
-}));
+const { RESULTS_PER_PAGE, db } = require('../config');
 
 /** Related functions for strings. */
 
@@ -14,6 +9,9 @@ class String {
    * expects:
    * - start => start index
    * - count => number of results
+   *
+   * returns:
+   * - [string, ...]
    */
   static findAll(start, count = RESULTS_PER_PAGE) {
     const startIdx = Math.min(db.length, start);
@@ -22,6 +20,15 @@ class String {
     return db.slice(startIdx, endIdx);
   }
 
+  /**
+   * create
+   *
+   * expects:
+   * - data (string)
+   *
+   * returns:
+   * - { id, text }
+   */
   static create(data) {
     const newString = { id: db.length, text: data };
 
