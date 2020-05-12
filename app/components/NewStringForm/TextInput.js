@@ -9,6 +9,10 @@ const TextInput = styled.input`
   padding: 5px 10px;
   margin-right: 5px;
   font-size: 18px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid ${props => props.theme.border};
+  color: ${props => props.theme.font};
 `;
 
 export default TextInput;
