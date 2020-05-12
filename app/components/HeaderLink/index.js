@@ -15,7 +15,7 @@ const HeaderLink = styled(NavLink)`
 
   &:hover,
   &.active {
-    border-bottom: 4px solid ${props => props.theme.border};
+    border-bottom: 4px solid ${props => props.theme.buttonBorder};
   }
 `;
 
