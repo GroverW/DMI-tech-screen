@@ -10,8 +10,9 @@ describe('AddNewString actions', () => {
     it('has a type of ADD_STRING', () => {
       const expected = {
         type: ADD_STRING,
+        data: '',
       };
-      expect(addStringSuccess()).toEqual(expected);
+      expect(addString('')).toEqual(expected);
     });
   });
 
@@ -19,8 +20,9 @@ describe('AddNewString actions', () => {
     it('has a type of ADD_STRING_SUCCESS', () => {
       const expected = {
         type: ADD_STRING_SUCCESS,
+        data: '',
       };
-      expect(addStringError()).toEqual(expected);
+      expect(addStringSuccess('')).toEqual(expected);
     });
   });
 
@@ -28,8 +30,9 @@ describe('AddNewString actions', () => {
     it('has a type of ADD_STRING_ERROR', () => {
       const expected = {
         type: ADD_STRING_ERROR,
+        error: '',
       };
-      expect(addString()).toEqual(expected);
+      expect(addStringError('')).toEqual(expected);
     });
   });
 });
