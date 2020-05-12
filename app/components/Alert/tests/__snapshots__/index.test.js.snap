@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Alert /> Should render and match the snapshot 1`] = `
+<span
+  class="Alert-sc-1vgw542-0 iJJSCM"
+/>
+`;
