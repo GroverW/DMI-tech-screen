@@ -1,6 +1,6 @@
 /**
  *
- * ContentContainer
+ * ContentContainer layout container
  *
  */
 

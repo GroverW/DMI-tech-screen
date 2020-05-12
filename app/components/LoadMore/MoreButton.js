@@ -1,6 +1,6 @@
 /**
  *
- * Style MoreButton for MoreButton component
+ * MoreButton
  *
  */
 

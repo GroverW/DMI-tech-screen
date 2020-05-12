@@ -1,6 +1,6 @@
 /**
  *
- * Alert
+ * Alert status message
  *
  */
 
