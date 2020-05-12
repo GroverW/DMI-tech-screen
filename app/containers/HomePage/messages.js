@@ -16,4 +16,12 @@ export default defineMessages({
     id: `${scope}.subHeading`,
     defaultMessage: `Home to the internet's latest Strings`,
   },
+  viewAllText: {
+    id: `${scope}.viewAllText`,
+    defaultMessage: 'View All Strings',
+  },
+  addNewText: {
+    id: `${scope}.addNewText`,
+    defaultMessage: 'Add New String',
+  },
 });
