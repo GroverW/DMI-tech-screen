@@ -6,14 +6,41 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
+import { FormattedMessage } from 'react-intl';
+import BorderLink from '../../components/BorderLink';
+
+import { makeGetTheme } from '../Themes/selectors';
 import messages from './messages';
 
-export default function NotFound() {
+function NotFound(props) {
+  console.log(props);
   return (
-    <h1>
-      <FormattedMessage {...messages.header} />
-    </h1>
+    <>
+      <h1>
+        <FormattedMessage {...messages.header} />
+      </h1>
+      <p>
+        <BorderLink to="/" theme={props.theme}>
+          <FormattedMessage {...messages.buttonText} />
+        </BorderLink>
+      </p>
+    </>
   );
 }
+
+NotFound.propTypes = {
+  theme: PropTypes.object,
+};
+
+const mapStateToProps = createSelector(
+  makeGetTheme(),
+  theme => ({
+    theme: theme.colors,
+  }),
+);
+
+export default connect(mapStateToProps)(NotFound);
