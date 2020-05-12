@@ -29,6 +29,7 @@ import { makeGetStrings } from '../selectors';
 import reducer, { REDUCER_KEY } from '../reducer';
 import saga from './saga';
 import { loadStrings } from './actions';
+import { resetStatuses } from '../actions';
 
 import messages from './messages';
 
@@ -41,6 +42,9 @@ export function AllStrings(props) {
 
     // only load if none have been loaded previously
     if (!stringsLoaded) props.loadStrings(stringsLoaded);
+
+    // resetStatuses to remove status messages
+    if (props.loaded || props.errors) props.resetStatuses();
   }, []);
 
   return (
@@ -92,6 +96,7 @@ AllStrings.propTypes = {
   errors: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
   theme: PropTypes.object,
   loadStrings: PropTypes.func,
+  resetStatuses: PropTypes.func,
 };
 
 const mapStateToProps = createSelector(
@@ -109,6 +114,7 @@ const mapStateToProps = createSelector(
 export function mapDispatchToProps(dispatch) {
   return {
     loadStrings: data => dispatch(loadStrings(data)),
+    resetStatuses: () => dispatch(resetStatuses()),
   };
 }
 
