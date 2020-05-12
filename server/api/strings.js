@@ -4,39 +4,55 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 
 const String = require('../models/string');
+const { sleep } = require('../utils/helpers');
+const {
+  getStringsValidationRules,
+  postStringValidationRules,
+  validate,
+} = require('../middlewares/stringsValidationMiddlewares');
 
 /** GET / => [string, ...] */
 
-router.get('/', async (req, res, next) => {
-  try {
-    const { start } = req.query;
+router.get(
+  '/',
+  getStringsValidationRules(),
+  validate,
+  async (req, res, next) => {
+    try {
+      await sleep(1000);
 
-    if (!start || !Number.isInteger(+start)) {
-      return res.status(400).json({ error: 'you messed up' });
+      const strings = String.findAll(+req.query.start);
+
+      return res.json({ strings });
+    } catch (err) {
+      return next({
+        status: 500,
+        message: 'Something went wrong. Please try again later',
+      });
     }
-
-    const strings = String.findAll(+start);
-
-    return res.json({ strings });
-  } catch (err) {
-    return next(err);
-  }
-});
+  },
+);
 
 /** POST / string */
 
-router.post('/new', async (req, res, next) => {
-  try {
-    // const { data } = req.body;
+router.post(
+  '/new',
+  postStringValidationRules(),
+  validate,
+  async (req, res, next) => {
+    try {
+      await sleep(1000);
 
-    return res.status(400).json({ error: 'sorry that did not work.' });
+      const string = String.create(req.body.data);
 
-    // const string = data && String.create(data);
-
-    // return res.status(201).json({ string });
-  } catch (err) {
-    return next(err);
-  }
-});
+      return res.status(201).json({ string });
+    } catch (err) {
+      return next({
+        status: 500,
+        message: 'Something went wrong. Please try again later',
+      });
+    }
+  },
+);
 
 module.exports = router;
