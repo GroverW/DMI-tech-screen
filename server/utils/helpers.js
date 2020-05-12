@@ -1,10 +1,8 @@
-const { RESULTS_PER_PAGE } = require('../config');
-
-const getPageStart = page =>
-  page && Number.isInteger(+page)
-    ? Math.max(page - 1, 0) * RESULTS_PER_PAGE
-    : 0;
+const sleep = ms =>
+  new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
 
 module.exports = {
-  getPageStart,
+  sleep,
 };
