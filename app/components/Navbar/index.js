@@ -5,29 +5,47 @@
  */
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function Navbar() {
+import { makeGetTheme } from '../../containers/Themes/selectors';
+import Nav from './Nav';
+import HomeLink from './HomeLink';
+import HeaderLink from './HeaderLink';
+import ThemeToggle from '../ThemeToggle';
+
+import { ALL_STRINGS, ADD_STRING } from '../../containers/App/urls';
+
+function Navbar(props) {
   return (
-    <nav className="Navbar">
-      <NavLink exact to="/">
+    <Nav theme={props}>
+      <HomeLink theme={props.theme} to="/">
         <FormattedMessage {...messages.home} />
-      </NavLink>
-      <NavLink exact to="/strings">
+      </HomeLink>
+      <HeaderLink theme={props.theme} exact to={ALL_STRINGS}>
         <FormattedMessage {...messages.viewAll} />
-      </NavLink>
-      <NavLink exact to="/strings/new">
+      </HeaderLink>
+      <HeaderLink theme={props.theme} exact to={ADD_STRING}>
         <FormattedMessage {...messages.addNew} />
-      </NavLink>
-    </nav>
+      </HeaderLink>
+      <ThemeToggle />
+    </Nav>
   );
 }
 
-Navbar.propTypes = {};
+Navbar.propTypes = {
+  theme: PropTypes.object,
+};
 
-export default Navbar;
+const mapStateToProps = createSelector(
+  makeGetTheme(),
+  theme => ({
+    theme: theme.colors,
+  }),
+);
+
+export default connect(mapStateToProps)(Navbar);
