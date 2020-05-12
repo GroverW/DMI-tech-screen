@@ -65,6 +65,7 @@ const stringsReducer = (state = initialState, action) =>
     }
   });
 
+// defining here because it's injected from two containers
 export const REDUCER_KEY = 'strings';
 
 export default stringsReducer;

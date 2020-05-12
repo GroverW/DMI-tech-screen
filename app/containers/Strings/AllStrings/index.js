@@ -12,18 +12,24 @@ import { FormattedMessage } from 'react-intl';
 import { createSelector } from 'reselect';
 import { compose } from 'redux';
 
+// components
 import ContentContainer from 'components/ContentContainer';
 import ListItem from 'components/ListItem';
 import Loading from 'components/Loading';
 import LoadMore from 'components/LoadMore';
 import Alert from 'components/Alert';
+
+// injectors
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
+
+// selectors, reducers, sagas and actions
 import { makeGetTheme } from 'containers/Themes/selectors';
 import { makeGetStrings } from '../selectors';
 import reducer, { REDUCER_KEY } from '../reducer';
 import saga from './saga';
 import { loadStrings } from './actions';
+
 import messages from './messages';
 
 export function AllStrings(props) {
@@ -31,7 +37,10 @@ export function AllStrings(props) {
   useInjectSaga({ key: 'allStrings', saga });
 
   useEffect(() => {
-    if (!props.strings.length) props.loadStrings(props.strings.length);
+    const stringsLoaded = props.strings.length;
+
+    // only load if none have been loaded previously
+    if (!stringsLoaded) props.loadStrings(stringsLoaded);
   }, []);
 
   return (
@@ -43,10 +52,11 @@ export function AllStrings(props) {
       <h2>
         <FormattedMessage {...messages.header} />
       </h2>
+
       <ContentContainer>
         {props.strings.length > 0 &&
           props.strings.map(string => (
-            <ListItem theme={props.theme.colors} key={string.id}>
+            <ListItem theme={props.theme} key={string.id}>
               {string.text}
             </ListItem>
           ))}
@@ -66,7 +76,7 @@ export function AllStrings(props) {
           </p>
         ) : (
           <LoadMore
-            theme={props.theme.colors}
+            theme={props.theme}
             onClick={() => props.loadStrings(props.strings.length)}
           />
         )}
@@ -92,11 +102,11 @@ const mapStateToProps = createSelector(
     loading: strings.loading,
     loaded: strings.loaded,
     errors: strings.error,
-    theme,
+    theme: theme.colors,
   }),
 );
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     loadStrings: data => dispatch(loadStrings(data)),
   };

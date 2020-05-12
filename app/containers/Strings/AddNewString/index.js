@@ -12,24 +12,31 @@ import { FormattedMessage } from 'react-intl';
 import { createSelector } from 'reselect';
 import { compose } from 'redux';
 
+// components
 import ContentContainer from 'components/ContentContainer';
 import Alert from 'components/Alert';
 import NewStringForm from 'components/NewStringForm';
 import Loading from 'components/Loading';
+
+// injectors
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
+
+// selectors, reducers, sagas, actions
 import { makeGetTheme } from 'containers/Themes/selectors';
 import { makeGetStrings } from '../selectors';
 import reducer, { REDUCER_KEY } from '../reducer';
 import saga from './saga';
 import { resetStatuses } from '../actions';
 import { addString } from './actions';
+
 import messages from './messages';
 
 export function AddNewString(props) {
   useInjectReducer({ key: REDUCER_KEY, reducer });
   useInjectSaga({ key: 'addNewString', saga });
 
+  // resetStatuses to remove status messages
   useEffect(() => {
     if (props.loaded || props.errors) props.resetStatuses();
   }, []);
@@ -45,7 +52,7 @@ export function AddNewString(props) {
       </h2>
       <ContentContainer>
         <FormattedMessage {...messages.body} />
-        <NewStringForm theme={props.theme.colors} addString={props.addString} />
+        <NewStringForm theme={props.theme} addString={props.addString} />
 
         {props.errors &&
           props.errors.map(error => (
@@ -59,6 +66,7 @@ export function AddNewString(props) {
             <FormattedMessage {...messages.success} />
           </Alert>
         )}
+
         {props.loading && <Loading />}
       </ContentContainer>
     </div>
@@ -66,7 +74,6 @@ export function AddNewString(props) {
 }
 
 AddNewString.propTypes = {
-  strings: PropTypes.array,
   loading: PropTypes.bool,
   loaded: PropTypes.bool,
   errors: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
@@ -79,11 +86,10 @@ const mapStateToProps = createSelector(
   makeGetStrings(),
   makeGetTheme(),
   (strings, theme) => ({
-    strings: strings.list,
     loading: strings.loading,
     loaded: strings.loaded,
     errors: strings.error,
-    theme,
+    theme: theme.colors,
   }),
 );
 
