@@ -13,4 +13,12 @@ export default defineMessages({
     id: `${scope}.header`,
     defaultMessage: 'Latest Strings',
   },
+  loadMore: {
+    id: `${scope}.loadMore`,
+    defaultMessage: 'Load More',
+  },
+  complete: {
+    id: `${scope}.complete`,
+    defaultMessage: `That's it! No more Strings.`,
+  },
 });

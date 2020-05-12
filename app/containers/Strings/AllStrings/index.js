@@ -12,10 +12,14 @@ import { FormattedMessage } from 'react-intl';
 import { createSelector } from 'reselect';
 import { compose } from 'redux';
 
+import ContentContainer from 'components/ContentContainer';
 import ListItem from 'components/ListItem';
+import Loading from 'components/Loading';
+import LoadMore from 'components/LoadMore';
+import Alert from 'components/Alert';
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import { makeGetTheme } from 'containers/SetThemeProvider/selectors';
+import { makeGetTheme } from 'containers/Themes/selectors';
 import { makeGetStrings } from '../selectors';
 import reducer, { REDUCER_KEY } from '../reducer';
 import saga from './saga';
@@ -39,18 +43,34 @@ export function AllStrings(props) {
       <h2>
         <FormattedMessage {...messages.header} />
       </h2>
-      {props.strings.length &&
-        props.strings.map(string => (
-          <ListItem theme={props.theme.colors} key={string.id}>
-            {string.text}
-          </ListItem>
-        ))}
-      <button
-        type="button"
-        onClick={() => props.loadStrings(props.strings.length)}
-      >
-        Load More
-      </button>
+      <ContentContainer>
+        {props.strings.length > 0 &&
+          props.strings.map(string => (
+            <ListItem theme={props.theme.colors} key={string.id}>
+              {string.text}
+            </ListItem>
+          ))}
+
+        {props.loading && <Loading />}
+
+        {props.errors &&
+          props.errors.map(error => (
+            <Alert key={error} type="error">
+              {error}
+            </Alert>
+          ))}
+
+        {props.loaded ? (
+          <p>
+            <FormattedMessage {...messages.complete} />
+          </p>
+        ) : (
+          <LoadMore
+            theme={props.theme.colors}
+            onClick={() => props.loadStrings(props.strings.length)}
+          />
+        )}
+      </ContentContainer>
     </div>
   );
 }
@@ -58,7 +78,8 @@ export function AllStrings(props) {
 AllStrings.propTypes = {
   strings: PropTypes.array,
   loading: PropTypes.bool,
-  error: PropTypes.string,
+  loaded: PropTypes.bool,
+  errors: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
   theme: PropTypes.object,
   loadStrings: PropTypes.func,
 };
@@ -69,7 +90,8 @@ const mapStateToProps = createSelector(
   (strings, theme) => ({
     strings: strings.list,
     loading: strings.loading,
-    error: strings.error,
+    loaded: strings.loaded,
+    errors: strings.error,
     theme,
   }),
 );
