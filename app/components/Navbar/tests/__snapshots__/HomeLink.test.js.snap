@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomeLink /> Should render and match the snapshot 1`] = `
+<a
+  class="HomeLink-sc-19918yo-0 gLwZUM"
+  href="/"
+/>
+`;

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AllStrings /> Should render and match the snapshot 1`] = `
+<div>
+  <h2>
+    <span>
+      Latest Strings
+    </span>
+  </h2>
+  <div
+    class="ContentContainer-sc-18efx5u-0 lpiSfa"
+  >
+    <button
+      class="MoreButton-sc-78mmo7-0 kWezJA"
+      type="button"
+    >
+      <span>
+        Load More
+      </span>
+    </button>
+  </div>
+</div>
+`;

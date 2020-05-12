@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ThemeToggle /> Should render and match the snapshot 1`] = `
+<div>
+  <select
+    class="Toggle-oqiqhq-0 jVmmhU"
+  >
+    <option
+      id="light"
+      value="light"
+    >
+      light
+    </option>
+    <option
+      id="dark"
+      value="dark"
+    >
+      dark
+    </option>
+  </select>
+</div>
+`;

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loading /> Should render and match the snapshot 1`] = `
+<div>
+  <br />
+  <span>
+    Loading...
+  </span>
+</div>
+`;
