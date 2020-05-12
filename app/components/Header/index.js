@@ -12,7 +12,7 @@ import { createSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-import { makeGetTheme } from '../../containers/SetThemeProvider/selectors';
+import { makeGetTheme } from '../../containers/Themes/selectors';
 import Nav from '../Nav';
 import HomeLink from '../HomeLink';
 import HeaderLink from '../HeaderLink';

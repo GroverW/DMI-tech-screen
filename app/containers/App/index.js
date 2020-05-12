@@ -18,7 +18,7 @@ import HomePage from 'containers/HomePage/Loadable';
 import AddNewString from 'containers/Strings/AddNewString';
 import AllStrings from 'containers/Strings/AllStrings';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import { makeGetTheme } from '../SetThemeProvider/selectors';
+import { makeGetTheme } from '../Themes/selectors';
 import Header from '../../components/Header';
 
 import GlobalStyle from '../../global-styles';
