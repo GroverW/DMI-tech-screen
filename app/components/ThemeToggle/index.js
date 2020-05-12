@@ -12,9 +12,9 @@ import { createSelector } from 'reselect';
 
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
-import { makeGetTheme } from '../../containers/SetThemeProvider/selectors';
-import { themes } from '../../containers/SetThemeProvider/themes';
-import { setTheme } from '../../containers/SetThemeProvider/actions';
+import { makeGetTheme } from '../../containers/Themes/selectors';
+import { themes } from '../../containers/Themes';
+import { setTheme } from '../../containers/Themes/actions';
 import Toggle from './Toggle';
 
 function ThemeToggle(props) {
@@ -50,7 +50,6 @@ const mapStateToProps = createSelector(
 export function mapDispatchToProps(dispatch) {
   return {
     onThemeChange: evt => dispatch(setTheme(evt.target.value)),
-    dispatch,
   };
 }
 
