@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { FormattedMessage } from 'react-intl';
+import Form from './Form';
 import InputRow from './InputRow';
 import TextInput from './TextInput';
 import Button from './Button';
@@ -28,11 +29,12 @@ function NewStringForm(props) {
 
   const handleSubmit = evt => {
     evt.preventDefault();
+    setFormData(() => ({ ...INITIAL_STATE }));
     props.addString(formData.stringText);
   };
 
   return (
-    <form>
+    <Form>
       <InputRow>
         <TextInput
           type="text"
@@ -40,12 +42,13 @@ function NewStringForm(props) {
           theme={props.theme}
           value={formData.stringText}
           onChange={handleChange}
+          required
         />
         <Button theme={props.theme} type="submit" onClick={handleSubmit}>
           <FormattedMessage {...messages.addButton} />
         </Button>
       </InputRow>
-    </form>
+    </Form>
   );
 }
 
