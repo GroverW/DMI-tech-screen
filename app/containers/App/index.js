@@ -19,7 +19,7 @@ import AddNewString from 'containers/Strings/AddNewString';
 import AllStrings from 'containers/Strings/AllStrings';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import { makeGetTheme } from '../Themes/selectors';
-import Header from '../../components/Header';
+import Navbar from '../../components/Navbar';
 
 import GlobalStyle from '../../global-styles';
 
@@ -28,7 +28,7 @@ import { ALL_STRINGS, ADD_STRING } from './urls';
 function App(props) {
   return (
     <div>
-      <Header />
+      <Navbar />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path={ALL_STRINGS} component={AllStrings} />
