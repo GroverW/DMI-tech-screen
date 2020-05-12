@@ -17,7 +17,6 @@ import { makeGetTheme } from '../Themes/selectors';
 import messages from './messages';
 
 function NotFound(props) {
-  console.log(props);
   return (
     <>
       <h1>
