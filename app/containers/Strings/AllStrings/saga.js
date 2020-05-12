@@ -1,5 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+import getErrors from 'utils/getErrors';
 import { LOAD_STRINGS_URL } from '../urls';
 import { loadStringsSuccess, loadStringsError } from './actions';
 import { LOAD_STRINGS } from '../constants';
@@ -13,7 +14,7 @@ export function* fetchStrings(action) {
 
     yield put(loadStringsSuccess(response.data.strings));
   } catch (error) {
-    yield put(loadStringsError(error));
+    yield put(loadStringsError(getErrors(error.response)));
   }
 }
 
