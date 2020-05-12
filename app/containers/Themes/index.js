@@ -1,6 +1,6 @@
 /**
  *
- * Styled Component Themes
+ * Theme styles
  *
  */
 

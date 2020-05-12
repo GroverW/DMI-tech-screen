@@ -1,6 +1,6 @@
 /*
  *
- * SetTheme reducer
+ * Themes reducer
  *
  */
 import produce from 'immer';

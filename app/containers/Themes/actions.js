@@ -1,6 +1,6 @@
 /*
  *
- * AllStrings actions
+ * Themes actions
  *
  */
 

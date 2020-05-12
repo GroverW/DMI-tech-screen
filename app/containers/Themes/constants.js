@@ -1,6 +1,6 @@
 /*
  *
- * SetTheme constants
+ * Themes constants
  *
  */
 
