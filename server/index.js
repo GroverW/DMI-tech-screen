@@ -23,7 +23,7 @@ app.use('/api/strings', stringsApi);
 /** 404 handler */
 
 app.use('/api', (req, res, next) => {
-  const err = new Error("Not Found");
+  const err = new Error('Not Found');
   err.status = 404;
 
   // pass the error to the next piece of middleware
